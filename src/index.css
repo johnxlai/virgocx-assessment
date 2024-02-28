@@ -62,4 +62,10 @@
     max-width: 68.75rem;
     @apply w-11/12 mx-auto;
   }
+
+  /* Toggle B */
+  input:checked ~ .dot {
+    transform: translateX(100%);
+    background-color: #48bb78;
+  }
 }
