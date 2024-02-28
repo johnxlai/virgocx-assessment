@@ -16,15 +16,10 @@ const Form = () => {
       [itemName]: !checkedItems[itemName],
     });
   };
-  const checkboxOptions = [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    // Add more options as needed
-  ];
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(isProficient, firstName, checked, checkedItems);
   }
 
   return (
@@ -58,11 +53,6 @@ const Form = () => {
         className='mx-auto bg-white p-5 mt-5 rounded-md w-full'
         onSubmit={handleSubmit}
       >
-        {/* <label className='switch'>
-            <input type='checkbox' />
-            <span className='slider round'></span>
-          </label> */}
-
         <div className='mb-4'>
           <label
             className='block text-gray-700 text-sm font-bold mb-2'
@@ -112,7 +102,7 @@ const Form = () => {
             </span>
           </label>
 
-          {checkboxOptions.map((option, index) => (
+          {Data.values.map((option, index) => (
             <div key={index}>
               <input
                 type='checkbox'
