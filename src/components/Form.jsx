@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import Data from '../data/data.js';
 
 const Form = () => {
+  const [isProficient, setIsProficient] = useState(Data.isProficient);
+
   const [firstName, setFirstName] = useState('');
+
+  const [checked, setChecked] = useState(false);
 
   const [checkedItems, setCheckedItems] = useState({});
 
@@ -25,7 +29,31 @@ const Form = () => {
 
   return (
     <div className='w-full'>
-      {Data.isProficient ? 'I am proficient' : 'I am not proficient'}
+      <div className='flex items-center justify-between w-full mb-12'>
+        <div className='text-gray-700 font-medium'>Editable</div>
+        <label
+          htmlFor='toggle'
+          className='switch flex items-center cursor-pointer'
+        >
+          <div className='relative'>
+            <input
+              type='checkbox'
+              id='toggle'
+              className='sr-only'
+              checked={checked}
+              onChange={() => {
+                setChecked(!checked);
+                setIsProficient(!isProficient);
+              }}
+            />
+            <div className='block bg-gray-600 w-14 h-8 rounded-full'></div>
+            <div className='dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition'></div>
+          </div>
+          <div className='ml-3 text-gray-700 font-medium'></div>
+        </label>
+      </div>
+      {isProficient ? 'I am proficient' : 'I am not proficient'}
+
       <form
         className='mx-auto bg-white p-5 mt-5 rounded-md w-full'
         onSubmit={handleSubmit}
@@ -34,21 +62,6 @@ const Form = () => {
             <input type='checkbox' />
             <span className='slider round'></span>
           </label> */}
-
-        <div className='flex items-center justify-between w-full mb-12'>
-          <div className='text-gray-700 font-medium'>Editable</div>
-          <label
-            htmlFor='toggle'
-            className='switch flex items-center cursor-pointer'
-          >
-            <div className='relative'>
-              <input type='checkbox' id='toggle' className='sr-only' />
-              <div className='block bg-gray-600 w-14 h-8 rounded-full'></div>
-              <div className='dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition'></div>
-            </div>
-            <div className='ml-3 text-gray-700 font-medium'></div>
-          </label>
-        </div>
 
         <div className='mb-4'>
           <label
