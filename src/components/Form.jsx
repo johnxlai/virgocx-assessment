@@ -75,6 +75,7 @@ const Form = () => {
             placeholder='First Name'
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            disabled={!isProficient}
           />
         </div>
 
@@ -88,11 +89,18 @@ const Form = () => {
               name='myRadio'
               value='no'
               defaultChecked={true}
+              disabled={!isProficient}
             />{' '}
             No
           </label>
           <label>
-            <input type='radio' name='myRadio' value='yes' /> Yes
+            <input
+              type='radio'
+              name='myRadio'
+              value='yes'
+              disabled={!isProficient}
+            />{' '}
+            Yes
           </label>
         </div>
 
@@ -110,6 +118,7 @@ const Form = () => {
                 type='checkbox'
                 id={option}
                 checked={checkedItems[option] || false}
+                disabled={!isProficient}
                 onChange={() => handleCheckboxChange(option)}
               />
               <label htmlFor={option}> {option}</label>
@@ -126,6 +135,7 @@ const Form = () => {
         <button
           className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-green-500 bg-purple-600 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2  uppercase tracking-wider '
           type='submit'
+          disabled={!isProficient}
         >
           Process
         </button>
