@@ -41,10 +41,10 @@ const Form = () => {
   return (
     <div className='w-full'>
       <form
-        className='mx-auto bg-white p-5 mt-5 rounded-md w-full'
+        className='mx-auto bg-white p-8 mt-5 rounded-[20px] w-full'
         onSubmit={handleSubmit}
       >
-        <div className='flex items-center justify-between w-full mb-12'>
+        <div className='flex items-center justify-between w-full mb-3'>
           <div className='text-gray-700 font-medium'>
             {editable ? 'Editable' : 'Not Editable'}
           </div>
@@ -138,14 +138,15 @@ const Form = () => {
               .join(', ')}
           </p>
         </div>
-
-        <button
-          className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border  bg-primary focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2  uppercase tracking-wider '
-          type='submit'
-          disabled={!editable}
-        >
-          Process
-        </button>
+        <div className='text-center'>
+          <button
+            className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border bg-primary focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full px-12 py-4 text-center mt-8 mb-2 tracking-wider '
+            type='submit'
+            disabled={!editable}
+          >
+            Process
+          </button>
+        </div>
       </form>
     </div>
   );
