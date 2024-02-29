@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Data from '../data/data.js';
 
 const Form = () => {
   const [data, setData] = useState(Data);
+
   // Toggle Editable
   const [editable, setEditable] = useState(Data.isEditable);
+  const [firstName, setFirstName] = useState('');
 
   //Proficient in ReactJs
   const [isProficient, setIsProficient] = useState('no');
-
-  const [firstName, setFirstName] = useState('');
-
   const handleRadioChange = (event) => {
     setIsProficient(event.target.value);
   };
@@ -28,14 +27,15 @@ const Form = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    setData({
+    const newData = {
       ...data, // Spread the existing data
       firstName, // Update the firstName
       isProficient, // Update the checked
       toolsUsed: checkedItems,
-    });
+    };
 
-    console.log(data);
+    setData(newData);
+    console.log(newData);
   }
 
   return (
@@ -91,6 +91,7 @@ const Form = () => {
           </label>
           <label>
             <input
+              className='disabled:cursor-not-allowed disabled:opacity-90 disabled:bg-[#6b47ed]'
               type='radio'
               value='no'
               disabled={!editable}
@@ -101,6 +102,7 @@ const Form = () => {
           </label>
           <label className='mb-3'>
             <input
+              className='disabled:cursor-not-allowed disabled:opacity-90 disabled:bg-[#6b47ed]'
               type='radio'
               value='yes'
               checked={isProficient === 'yes'}
@@ -122,6 +124,7 @@ const Form = () => {
           {Data.values.map((option, index) => (
             <div key={index}>
               <input
+                className='disabled:cursor-not-allowed disabled:opacity-90 disabled:bg-[#6b47ed]'
                 type='checkbox'
                 id={option}
                 checked={checkedItems[option] || false}
@@ -131,16 +134,10 @@ const Form = () => {
               <label htmlFor={option}> {option}</label>
             </div>
           ))}
-          <p>
-            Selected options:{' '}
-            {Object.keys(checkedItems)
-              .filter((item) => checkedItems[item])
-              .join(', ')}
-          </p>
         </div>
         <div className='text-center'>
           <button
-            className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border bg-primary focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full px-12 py-4 text-center mt-8 mb-2 tracking-wider '
+            className='disabled:cursor-not-allowed disabled:opacity-30 disabled:bg-[#6b47ed] disabled:border-gray-600 text-white hover:text-white border bg-primary focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full px-12 py-4 text-center mt-8 mb-2 tracking-wider '
             type='submit'
             disabled={!editable}
           >
@@ -148,6 +145,16 @@ const Form = () => {
           </button>
         </div>
       </form>
+      <div className='bg-white text-gray-600 p-3 mt-3 '>
+        <p>
+          Selected options:{' '}
+          {Object.keys(checkedItems)
+            .filter((item) => checkedItems[item])
+            .join(', ')}
+        </p>
+        <p>{firstName}</p>
+        <p>{isProficient}</p>
+      </div>
     </div>
   );
 };
