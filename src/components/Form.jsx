@@ -2,14 +2,21 @@ import React, { useState } from 'react';
 import Data from '../data/data.js';
 
 const Form = () => {
+  const [data, setData] = useState(Data);
+  // Toggle Editable
+  const [editable, setEditable] = useState(Data.isEditable);
+
+  //Proficient in ReactJs
   const [isProficient, setIsProficient] = useState(Data.isProficient);
 
   const [firstName, setFirstName] = useState('');
 
-  const [checked, setChecked] = useState(false);
+  const handleRadioChange = (event) => {
+    setIsProficient(event.target.value);
+  };
 
+  //Tools used
   const [checkedItems, setCheckedItems] = useState({});
-
   const handleCheckboxChange = (itemName) => {
     setCheckedItems({
       ...checkedItems,
@@ -19,7 +26,14 @@ const Form = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(isProficient, firstName, checked, checkedItems);
+    setData({
+      ...data, // Spread the existing data
+      firstName, // Update the firstName
+      isProficient, // Update the checked
+      toolsUsed: checkedItems,
+      checkedItems, // Update the checkedItems
+    });
+    console.log(data);
   }
 
   return (
@@ -35,10 +49,9 @@ const Form = () => {
               type='checkbox'
               id='toggle'
               className='sr-only'
-              checked={checked}
+              checked={editable}
               onChange={() => {
-                setChecked(!checked);
-                setIsProficient(!isProficient);
+                setEditable(!editable);
               }}
             />
             <div className='block bg-gray-600 w-14 h-8 rounded-full'></div>
@@ -47,7 +60,7 @@ const Form = () => {
           <div className='ml-3 text-gray-700 font-medium'></div>
         </label>
       </div>
-      {isProficient ? 'I am proficient' : 'I am not proficient'}
+      {!editable ? 'Editable' : 'Not Editable'}
 
       <form
         className='mx-auto bg-white p-5 mt-5 rounded-md w-full'
@@ -65,7 +78,7 @@ const Form = () => {
             placeholder='First Name'
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            disabled={!isProficient}
+            disabled={!editable}
           />
         </div>
 
@@ -76,19 +89,20 @@ const Form = () => {
           <label>
             <input
               type='radio'
-              name='myRadio'
-              value='no'
-              defaultChecked={true}
-              disabled={!isProficient}
+              value={false}
+              disabled={!editable}
+              checked={isProficient === false}
+              onChange={handleRadioChange}
             />{' '}
             No
           </label>
           <label>
             <input
               type='radio'
-              name='myRadio'
-              value='yes'
-              disabled={!isProficient}
+              value={true}
+              checked={isProficient === true}
+              onChange={handleRadioChange}
+              disabled={!editable}
             />{' '}
             Yes
           </label>
@@ -108,7 +122,7 @@ const Form = () => {
                 type='checkbox'
                 id={option}
                 checked={checkedItems[option] || false}
-                disabled={!isProficient}
+                disabled={!editable}
                 onChange={() => handleCheckboxChange(option)}
               />
               <label htmlFor={option}> {option}</label>
@@ -117,7 +131,7 @@ const Form = () => {
           <p>
             Selected options:{' '}
             {Object.keys(checkedItems)
-              .filter((item) => checkedItems[item])
+              .filter((item) => checkedItems[item.indexOf])
               .join(', ')}
           </p>
         </div>
@@ -125,7 +139,7 @@ const Form = () => {
         <button
           className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-green-500 bg-purple-600 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2  uppercase tracking-wider '
           type='submit'
-          disabled={!isProficient}
+          disabled={!editable}
         >
           Process
         </button>
