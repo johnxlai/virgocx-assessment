@@ -74,15 +74,21 @@
   input[type='radio'],
   input[type='checkbox'] {
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
     background: transparent;
     border: 1px solid var(--main-bg-color);
     border-radius: 50%;
 
-    &:checked {
+    &:checked,
+    &:focus {
       background-image: none !important;
       background-color: var(--main-bg-color);
+    }
+
+    &:disabled {
+      background-color: #f3f4f6;
+      border-color: #f3f4f6;
     }
   }
 
