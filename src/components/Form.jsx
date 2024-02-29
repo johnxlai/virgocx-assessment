@@ -7,7 +7,7 @@ const Form = () => {
   const [editable, setEditable] = useState(Data.isEditable);
 
   //Proficient in ReactJs
-  const [isProficient, setIsProficient] = useState(Data.isProficient);
+  const [isProficient, setIsProficient] = useState('no');
 
   const [firstName, setFirstName] = useState('');
 
@@ -89,9 +89,9 @@ const Form = () => {
           <label>
             <input
               type='radio'
-              value={false}
+              value='no'
               disabled={!editable}
-              checked={isProficient === false}
+              checked={isProficient === 'no'}
               onChange={handleRadioChange}
             />{' '}
             No
@@ -99,8 +99,8 @@ const Form = () => {
           <label>
             <input
               type='radio'
-              value={true}
-              checked={isProficient === true}
+              value='yes'
+              checked={isProficient === 'yes'}
               onChange={handleRadioChange}
               disabled={!editable}
             />{' '}
@@ -131,7 +131,7 @@ const Form = () => {
           <p>
             Selected options:{' '}
             {Object.keys(checkedItems)
-              .filter((item) => checkedItems[item.indexOf])
+              .filter((item) => checkedItems[item])
               .join(', ')}
           </p>
         </div>

@@ -1,6 +1,6 @@
 const data = {
   isEditable: true,
-  isProficient: false,
+  isProficient: 'no',
   values: ['Redux', 'Lodash', 'Ant design', 'Webpack', 'Other'],
 
   /**
