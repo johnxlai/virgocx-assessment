@@ -63,9 +63,29 @@
     @apply w-11/12 mx-auto;
   }
 
-  /* Toggle B */
+  :root {
+    --main-bg-color: #6b47ed;
+  }
+
+  .bg-primary {
+    background-color: var(--main-bg-color);
+  }
+
+  /* Toggle */
+  input ~ .dot {
+    background-color: var(--main-bg-color);
+  }
+  input ~ .block {
+    background-color: white;
+    border: 1px solid var(--main-bg-color);
+  }
+
   input:checked ~ .dot {
     transform: translateX(100%);
-    background-color: #48bb78;
+    background-color: white;
+  }
+
+  input:checked ~ .block {
+    background-color: var(--main-bg-color);
   }
 }

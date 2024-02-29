@@ -2,7 +2,6 @@ const data = {
   isEditable: true,
   isProficient: 'no',
   values: ['Redux', 'Lodash', 'Ant design', 'Webpack', 'Other'],
-
   /**
    * values for toolsUsed. Please note that the values are stored in a string, not an array
    * 0:	Redux
