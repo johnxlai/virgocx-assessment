@@ -1,4 +1,5 @@
 # VirgoCx Assessment - Front End Interview
+Virgo Group Frontend Development Project
 
 ### Running The Application
 First, install all the dependencies,

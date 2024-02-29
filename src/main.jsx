@@ -8,8 +8,8 @@ import App from '@/App';
 ReactDOM.render(
   <React.StrictMode>
     <Helmet
-      defaultTitle='Vite React Tailwind Starter'
-      titleTemplate='%s | Vite React Tailwind Starter'
+      defaultTitle='Virgo Group Frontend'
+      titleTemplate='%s | Virgo Group Frontend'
     >
       <meta charSet='utf-8' />
       <html lang='id' amp />
