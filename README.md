@@ -1,6 +1,9 @@
 # VirgoCx Assessment - Front End Interview
 Virgo Group Frontend Development Project
 
+## Live Demo
+[Live Demo](https://virgocx-assessment.vercel.app/)
+
 ### Running The Application
 First, install all the dependencies,
 ```bash
