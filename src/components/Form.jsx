@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Data from '../data/data.js';
 
 const Form = () => {
+  //Data Object
   const [data, setData] = useState(Data);
 
   // Toggle Editable
@@ -27,15 +28,25 @@ const Form = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
+    const updatedItems = Object.keys(checkedItems)
+      .filter((item) => checkedItems[item])
+      .join(', ');
+
     const newData = {
       ...data, // Spread the existing data
       firstName, // Update the firstName
       isProficient, // Update the checked
-      toolsUsed: checkedItems,
+      toolsUsed: updatedItems,
+      checkedItems,
     };
 
     setData(newData);
     console.log(newData);
+
+    // clear the form
+    setFirstName('');
+    setIsProficient('no');
+    setCheckedItems({});
   }
 
   return (
@@ -121,15 +132,15 @@ const Form = () => {
             </span>
           </label>
 
-          {Data.values.map((option, index) => (
+          {Data.defaultTools.map((option, index) => (
             <div key={index}>
               <input
                 className='disabled:cursor-not-allowed disabled:opacity-90 disabled:bg-[#6b47ed]'
                 type='checkbox'
                 id={option}
-                checked={checkedItems[option] || false}
+                checked={checkedItems[index] || false}
                 disabled={!editable}
-                onChange={() => handleCheckboxChange(option)}
+                onChange={() => handleCheckboxChange(index)}
               />
               <label htmlFor={option}> {option}</label>
             </div>
@@ -145,7 +156,9 @@ const Form = () => {
           </button>
         </div>
       </form>
-      <div className='bg-white text-gray-600 p-3 mt-3 '>
+
+      {/* REMOVE the hidden class to see the selected options in action */}
+      <div className='bg-white text-gray-600 p-3 mt-3 hidden'>
         <p>
           Selected options:{' '}
           {Object.keys(checkedItems)
