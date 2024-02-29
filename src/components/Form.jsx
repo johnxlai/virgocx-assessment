@@ -52,7 +52,7 @@ const Form = () => {
             htmlFor='toggle'
             className='switch flex items-center cursor-pointer'
           >
-            <div className='relative'>
+            <div className='relative -right-4'>
               <input
                 type='checkbox'
                 id='toggle'
@@ -75,10 +75,10 @@ const Form = () => {
             htmlFor='firstName'
           ></label>
           <input
-            className='shadow appearance-none border rounded w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+            className=' appearance-none border w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             id='firstName'
             type='text'
-            placeholder='First Name'
+            placeholder={!editable ? '' : 'First Name'}
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             disabled={!editable}
@@ -124,9 +124,9 @@ const Form = () => {
               <input
                 type='checkbox'
                 id={option}
-                checked={checkedItems[index] || false}
+                checked={checkedItems[option] || false}
                 disabled={!editable}
-                onChange={() => handleCheckboxChange(index)}
+                onChange={() => handleCheckboxChange(option)}
               />
               <label htmlFor={option}> {option}</label>
             </div>
