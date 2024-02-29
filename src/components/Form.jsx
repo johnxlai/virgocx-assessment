@@ -75,7 +75,7 @@ const Form = () => {
             htmlFor='firstName'
           ></label>
           <input
-            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+            className='shadow appearance-none border rounded w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             id='firstName'
             type='text'
             placeholder='First Name'
@@ -85,7 +85,7 @@ const Form = () => {
           />
         </div>
 
-        <div className='text-gray-700 flex flex-col mb-3'>
+        <div className='text-gray-700 flex flex-col gap-3 mb-3'>
           <label htmlFor='reactJs' className='font-bold'>
             Are you proficient in ReactJs development?
           </label>
@@ -99,7 +99,7 @@ const Form = () => {
             />{' '}
             No
           </label>
-          <label>
+          <label className='mb-3'>
             <input
               type='radio'
               value='yes'
@@ -111,10 +111,10 @@ const Form = () => {
           </label>
         </div>
 
-        <div className='text-gray-700 flex flex-col'>
+        <div className='text-gray-700 flex flex-col gap-3'>
           <label htmlFor='toolsUsed' className='flex flex-col font-bold'>
             Which tools do you use?
-            <span className='text-gray-400 text-xs mb-3 font-normal'>
+            <span className='text-gray-400 text-xs font-normal'>
               Please select all that apply.
             </span>
           </label>

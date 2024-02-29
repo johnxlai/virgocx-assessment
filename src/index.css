@@ -71,6 +71,21 @@
     background-color: var(--main-bg-color);
   }
 
+  input[type='radio'],
+  input[type='checkbox'] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: transparent;
+    border: 1px solid var(--main-bg-color);
+    border-radius: 50%;
+
+    &:checked {
+      background-image: none !important;
+      background-color: var(--main-bg-color);
+    }
+  }
+
   /* Toggle */
   input ~ .dot {
     background-color: var(--main-bg-color);
